@@ -9,6 +9,9 @@ class S3Manager:
     """Manager for S3 operations"""
 
     def __init__(self, bucket_name, region='us-east-1'):
+        # Validate bucket name
+        if not bucket_name or not bucket_name.strip():
+            raise ValueError("Bucket name cannot be empty")
         """
         Initialize S3 manager
 

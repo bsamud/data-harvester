@@ -1,16 +1,17 @@
-"""PDF text extraction"""
+"""PDF text extraction with memory optimization"""
 from pathlib import Path
 from common.logger import log
 
 class PDFExtractor:
-    """Extract text from PDF files"""
+    """Extract text from PDF files with memory optimization"""
 
-    def __init__(self):
+    def __init__(self, chunk_size=100):
         self.extracted_count = 0
+        self.chunk_size = chunk_size
 
     def extract_text(self, pdf_path):
         """
-        Extract text from PDF
+        Extract text from PDF with chunked processing
 
         Args:
             pdf_path: Path to PDF file
@@ -21,15 +22,23 @@ class PDFExtractor:
         try:
             import PyPDF2
 
-            text = ""
+            text_chunks = []
             with open(pdf_path, 'rb') as file:
                 pdf_reader = PyPDF2.PdfReader(file)
                 num_pages = len(pdf_reader.pages)
 
-                for page_num in range(num_pages):
-                    page = pdf_reader.pages[page_num]
-                    text += page.extract_text()
+                # Process in chunks to avoid memory issues
+                for i in range(0, num_pages, self.chunk_size):
+                    chunk_text = ""
+                    end_page = min(i + self.chunk_size, num_pages)
 
+                    for page_num in range(i, end_page):
+                        page = pdf_reader.pages[page_num]
+                        chunk_text += page.extract_text()
+
+                    text_chunks.append(chunk_text)
+
+            text = "".join(text_chunks)
             self.extracted_count += 1
             log.info(f"Extracted text from {pdf_path} ({num_pages} pages)")
 

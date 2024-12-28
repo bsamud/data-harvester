@@ -10,7 +10,7 @@ def remove_html_tags(text):
 def remove_extra_whitespace(text):
     """Remove extra whitespace"""
     text = re.sub(r'\s+', ' ', text)
-    return text.strip()
+    return text.encode("utf-8", errors="ignore").decode("utf-8").strip()
 
 def normalize_text(text):
     """Normalize text"""
@@ -26,7 +26,7 @@ def normalize_text(text):
     # Remove special characters
     text = re.sub(r'[^\w\s\.\,\!\?\-]', '', text)
 
-    return text
+    return text.encode("utf-8", errors="ignore").decode("utf-8")
 
 def clean_document(document):
     """

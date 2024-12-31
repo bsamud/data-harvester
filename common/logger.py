@@ -41,3 +41,9 @@ def get_logger(name, log_file=None, level=logging.INFO):
 
 # Default logger
 log = get_logger('dataHarvest')
+
+
+def log_structured(level, message, **kwargs):
+    import json
+    data = {'message': message, **kwargs}
+    log.log(level, json.dumps(data))

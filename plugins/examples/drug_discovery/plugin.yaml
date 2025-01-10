@@ -1,0 +1,8 @@
+name: drug_discovery
+version: 1.0.0
+description: Example pharmaceutical data harvesting plugin
+author: dataHarvest Community
+
+sources:
+  - pubmed
+  - clinicaltrials

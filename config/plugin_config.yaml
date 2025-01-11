@@ -1,0 +1,9 @@
+plugins:
+  enabled:
+    - drug_discovery
+
+  drug_discovery:
+    sources:
+      - pubmed
+      - clinicaltrials
+    output_dir: /tmp/dataharvest/plugins/drug_discovery

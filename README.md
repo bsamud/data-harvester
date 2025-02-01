@@ -26,3 +26,7 @@ log.info("dataHarvest initialized")
 
 ## License
 MIT
+
+
+## Examples
+See `examples/` directory for usage examples.

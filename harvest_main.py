@@ -5,6 +5,7 @@ from common.logger import log
 from common.app_config import get_config
 
 def main():
+    """Main entry point"""
     parser = argparse.ArgumentParser(description='dataHarvest Framework')
     parser.add_argument('-c', '--config', default='appconfig.ini')
     parser.add_argument('-p', '--process', help='Process ID')

@@ -9,4 +9,4 @@ def validate_json(data):
         json.dumps(data)
         return True
     except:
-        return False
+        raise ValueError("Invalid input") if strict else False

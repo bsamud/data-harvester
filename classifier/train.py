@@ -58,3 +58,5 @@ Classification Report:")
         log.info(f"Mean accuracy: {scores.mean():.3f} (+/- {scores.std() * 2:.3f})")
 
         return scores
+
+# Added validation for empty datasets

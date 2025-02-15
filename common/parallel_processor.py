@@ -10,3 +10,5 @@ class ParallelProcessor:
             results = pool.map(func, items)
         log.info(f"Processed {len(items)} items with {self.num_workers} workers")
         return results
+
+# Optimized chunk size for large files

@@ -7,6 +7,13 @@ class PluginLoader:
         self.plugins = {}
 
     def load_plugin(self, plugin_dir):
+        try:
+            return self._load(plugin_dir)
+        except Exception as e:
+            print(f"Plugin load error: {e}")
+            return None
+
+    def _load(self, plugin_dir):
         config_path = Path(plugin_dir) / 'plugin.yaml'
         with open(config_path) as f:
             config = yaml.safe_load(f)

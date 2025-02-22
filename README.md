@@ -30,3 +30,12 @@ MIT
 
 ## Examples
 See `examples/` directory for usage examples.
+
+
+## Documentation
+- [Architecture](docs/ARCHITECTURE.md)
+- [Setup Guide](docs/SETUP.md)
+- [Plugin Development](docs/PLUGIN_DEVELOPMENT.md)
+
+## Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md)

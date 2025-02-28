@@ -23,3 +23,20 @@ wheels/
 .venv
 env/
 venv/
+
+# Development/build scripts (not for production)
+*_history.py
+*_commits.py
+generate_*.py
+rename_*.sh
+*.bak
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

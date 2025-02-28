@@ -1,6 +1,6 @@
 """Scrapy settings for webscraper"""
 
-BOT_NAME = 'dataHarvest'
+BOT_NAME = 'data-harvester'
 
 SPIDER_MODULES = ['crawler.webscraper.spiders']
 NEWSPIDER_MODULE = 'crawler.webscraper.spiders'
@@ -19,7 +19,7 @@ COOKIES_ENABLED = False
 
 # Configure item pipelines
 ITEM_PIPELINES = {
-    'crawler.webscraper.pipelines.DataHarvestPipeline': 300,
+    'crawler.webscraper.pipelines.DataHarvesterPipeline': 300,
 }
 
 # Enable HTTP caching

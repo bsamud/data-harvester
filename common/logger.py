@@ -1,4 +1,4 @@
-"""Logging utilities for dataHarvest"""
+"""Logging utilities for data-harvester"""
 import logging
 import sys
 from datetime import datetime
@@ -40,7 +40,7 @@ def get_logger(name, log_file=None, level=logging.INFO):
     return logger
 
 # Default logger
-log = get_logger('dataHarvest')
+log = get_logger('data-harvester')
 
 
 def log_structured(level, message, **kwargs):

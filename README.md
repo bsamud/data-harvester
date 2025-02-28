@@ -1,4 +1,4 @@
-# dataHarvest v1.0.0
+# data-harvester v1.0.0
 
 
 A generic, open-source data harvesting and ETL framework.
@@ -22,7 +22,7 @@ from common.logger import log
 from common.app_config import get_config
 
 config = get_config()
-log.info("dataHarvest initialized")
+log.info("data-harvester initialized")
 ```
 
 ## License

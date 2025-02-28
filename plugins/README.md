@@ -1,6 +1,6 @@
 # Plugins
 
-Plugin architecture for dataHarvest.
+Plugin architecture for data-harvester.
 
 ## Creating Plugins
 1. Extend Plugin base class

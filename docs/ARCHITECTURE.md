@@ -1,4 +1,4 @@
-# dataHarvest Architecture
+# data-harvester Architecture
 
 ## Core Components
 

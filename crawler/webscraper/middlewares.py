@@ -1,8 +1,8 @@
-"""Spider middlewares for dataHarvest"""
+"""Spider middlewares for data-harvester"""
 from scrapy import signals
 from common.logger import log
 
-class DataHarvestSpiderMiddleware:
+class DataHarvesterSpiderMiddleware:
     """Spider middleware for custom processing"""
 
     @classmethod
@@ -29,7 +29,7 @@ class DataHarvestSpiderMiddleware:
         """Called when spider is opened"""
         log.info(f"Spider opened: {spider.name}")
 
-class DataHarvestDownloaderMiddleware:
+class DataHarvesterDownloaderMiddleware:
     """Downloader middleware"""
 
     @classmethod

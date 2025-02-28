@@ -1,4 +1,4 @@
-# Contributing to dataHarvest
+# Contributing to data-harvester
 
 ## Getting Started
 1. Fork the repository

@@ -1,9 +1,9 @@
-"""Scrapy pipelines for dataHarvest"""
+"""Scrapy pipelines for data-harvester"""
 from datetime import datetime
 import json
 from common.logger import log
 
-class DataHarvestPipeline:
+class DataHarvesterPipeline:
     """Pipeline for processing scraped items"""
 
     def __init__(self):

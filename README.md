@@ -1,4 +1,5 @@
-# dataHarvest
+# dataHarvest v1.0.0
+
 
 A generic, open-source data harvesting and ETL framework.
 

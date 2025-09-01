@@ -1,1 +1,0 @@
-"""Drug discovery example plugin"""

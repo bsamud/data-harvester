@@ -1,9 +1,9 @@
 plugins:
-  enabled:
-    - drug_discovery
+  enabled: []
 
-  drug_discovery:
-    sources:
-      - pubmed
-      - clinicaltrials
-    output_dir: /tmp/dataharvest/plugins/drug_discovery
+  # Example plugin configuration:
+  # my_plugin:
+  #   sources:
+  #     - source1
+  #     - source2
+  #   output_dir: /tmp/dataharvest/plugins/my_plugin

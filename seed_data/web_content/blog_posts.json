@@ -1,0 +1,112 @@
+[
+  {
+    "id": "blog-001",
+    "url": "https://devblog.example.com/my-journey-learning-rust",
+    "title": "My Journey Learning Rust: Month One",
+    "author": "Alex Rivera",
+    "content": "I finally took the plunge and started learning Rust. The borrow checker was frustrating at first, but it's starting to click. The compiler error messages are actually helpful once you learn to read them. Built my first CLI tool this week - a simple file organizer. The ecosystem is smaller than Python but the quality is impressive.",
+    "published_date": "2025-08-12",
+    "tags": ["rust", "learning", "programming", "beginners"],
+    "comments_count": 42,
+    "likes": 156
+  },
+  {
+    "id": "blog-002",
+    "url": "https://devblog.example.com/debugging-production-outage",
+    "title": "How We Debugged a 3AM Production Outage",
+    "author": "Jamie Foster",
+    "content": "Last Tuesday at 3AM, our alerts went crazy. Database connections exhausted, response times through the roof. Turned out a background job was holding connections open during retries. Added connection timeouts and proper cleanup. Lessons learned: always set timeouts, monitor connection pools, and keep runbooks updated.",
+    "published_date": "2025-08-08",
+    "tags": ["debugging", "production", "postmortem", "databases"],
+    "comments_count": 89,
+    "likes": 312
+  },
+  {
+    "id": "blog-003",
+    "url": "https://devblog.example.com/remote-work-setup-2025",
+    "title": "My Remote Work Setup in 2025",
+    "author": "Taylor Morgan",
+    "content": "After 5 years of remote work, I've optimized my home office. Standing desk, ultrawide monitor, mechanical keyboard with quiet switches. Good lighting for video calls. The real game changer was getting a separate work machine - helps with work-life boundaries. Here's my complete gear list and why each piece matters.",
+    "published_date": "2025-08-01",
+    "tags": ["remote-work", "productivity", "setup", "lifestyle"],
+    "comments_count": 67,
+    "likes": 234
+  },
+  {
+    "id": "blog-004",
+    "url": "https://devblog.example.com/side-project-launched",
+    "title": "I Finally Launched My Side Project",
+    "author": "Jordan Chen",
+    "content": "After 18 months of evenings and weekends, my side project is live. It's a simple tool for tracking reading habits. Not revolutionary, but it solves my problem. The hardest part wasn't coding - it was deciding to ship something imperfect. Revenue: $0. Satisfaction: priceless. Here's what I learned.",
+    "published_date": "2025-07-25",
+    "tags": ["side-project", "indie", "launch", "entrepreneurship"],
+    "comments_count": 134,
+    "likes": 456
+  },
+  {
+    "id": "blog-005",
+    "url": "https://devblog.example.com/vim-after-ten-years",
+    "title": "Vim After Ten Years: Still Worth It?",
+    "author": "Casey Williams",
+    "content": "A decade with Vim. Was it worth the learning curve? Absolutely. Modal editing is now second nature. My config has grown, shrunk, and grown again. These days I use Neovim with LSP. The muscle memory transfers everywhere - shell, git, even browser extensions. The real value isn't speed, it's the editing model.",
+    "published_date": "2025-07-18",
+    "tags": ["vim", "neovim", "editors", "productivity"],
+    "comments_count": 203,
+    "likes": 567
+  },
+  {
+    "id": "blog-006",
+    "url": "https://devblog.example.com/interviewing-at-faang",
+    "title": "What I Learned From 6 FAANG Interviews",
+    "author": "Morgan Kim",
+    "content": "Interviewed at 6 major tech companies this year. Got 4 offers. The process is exhausting but learnable. System design matters more at senior levels. Behavioral questions are underrated. LeetCode helps but understanding patterns matters more than memorizing solutions. Here's my honest breakdown of each company.",
+    "published_date": "2025-07-10",
+    "tags": ["interviews", "career", "faang", "advice"],
+    "comments_count": 312,
+    "likes": 892
+  },
+  {
+    "id": "blog-007",
+    "url": "https://devblog.example.com/writing-technical-docs",
+    "title": "Why I Now Love Writing Technical Documentation",
+    "author": "Sam Patel",
+    "content": "I used to hate writing docs. Now it's my favorite part of shipping features. Good docs force clear thinking. They catch design issues early. Future you will thank present you. I've adopted a docs-first approach - write the README before the code. It sounds backwards but it works.",
+    "published_date": "2025-07-03",
+    "tags": ["documentation", "writing", "best-practices", "communication"],
+    "comments_count": 78,
+    "likes": 345
+  },
+  {
+    "id": "blog-008",
+    "url": "https://devblog.example.com/burnout-recovery",
+    "title": "Recovering From Developer Burnout",
+    "author": "Riley Thompson",
+    "content": "Hit a wall last year. Couldn't code, couldn't think, couldn't care. Took a month off, which felt impossible but was necessary. Came back with boundaries: no Slack after 6pm, no weekend work, regular exercise. Still love coding, just with healthier habits. If you're burning out, it's not weakness to step back.",
+    "published_date": "2025-06-25",
+    "tags": ["burnout", "mental-health", "career", "wellness"],
+    "comments_count": 445,
+    "likes": 1203
+  },
+  {
+    "id": "blog-009",
+    "url": "https://devblog.example.com/open-source-first-pr",
+    "title": "My First Open Source Contribution",
+    "author": "Avery Johnson",
+    "content": "Finally submitted my first PR to a major open source project. Just a typo fix, but the process taught me a lot. Reading contributor guidelines, understanding the codebase, navigating GitHub workflows. The maintainers were welcoming. Already looking for my next contribution. Start small, but start.",
+    "published_date": "2025-06-18",
+    "tags": ["open-source", "github", "community", "beginners"],
+    "comments_count": 56,
+    "likes": 234
+  },
+  {
+    "id": "blog-010",
+    "url": "https://devblog.example.com/ai-pair-programming",
+    "title": "Three Months of AI Pair Programming: Honest Review",
+    "author": "Drew Martinez",
+    "content": "Been using AI coding assistants daily for three months. Productivity boost for boilerplate: huge. For complex logic: mixed. For learning new codebases: surprisingly helpful. The key is treating it as a junior pair, not an oracle. Review everything, understand the suggestions, use it as a starting point not an ending point.",
+    "published_date": "2025-06-10",
+    "tags": ["ai", "copilot", "productivity", "tools"],
+    "comments_count": 189,
+    "likes": 534
+  }
+]

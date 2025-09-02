@@ -1,0 +1,281 @@
+[
+  {
+    "id": "api-001",
+    "service": "User Management API",
+    "version": "2.1.0",
+    "base_url": "https://api.example.com/v2/users",
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/users",
+        "description": "List all users with pagination",
+        "parameters": [
+          {"name": "page", "type": "integer", "required": false, "default": 1},
+          {"name": "limit", "type": "integer", "required": false, "default": 20, "max": 100},
+          {"name": "status", "type": "string", "required": false, "enum": ["active", "inactive", "pending"]}
+        ],
+        "response": {
+          "status": 200,
+          "body": {"users": "array", "total": "integer", "page": "integer", "pages": "integer"}
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/users",
+        "description": "Create a new user",
+        "body": {
+          "email": {"type": "string", "required": true, "format": "email"},
+          "name": {"type": "string", "required": true, "min_length": 2},
+          "role": {"type": "string", "required": false, "default": "member"}
+        },
+        "response": {
+          "status": 201,
+          "body": {"id": "string", "email": "string", "name": "string", "created_at": "datetime"}
+        }
+      }
+    ],
+    "authentication": "Bearer token in Authorization header",
+    "rate_limit": "1000 requests per hour"
+  },
+  {
+    "id": "api-002",
+    "service": "Document Processing API",
+    "version": "1.5.0",
+    "base_url": "https://api.example.com/v1/documents",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/documents/upload",
+        "description": "Upload a document for processing",
+        "content_type": "multipart/form-data",
+        "parameters": [
+          {"name": "file", "type": "file", "required": true, "max_size": "50MB"},
+          {"name": "extract_text", "type": "boolean", "required": false, "default": true},
+          {"name": "detect_language", "type": "boolean", "required": false, "default": false}
+        ],
+        "response": {
+          "status": 202,
+          "body": {"job_id": "string", "status": "string", "estimated_time": "integer"}
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/documents/{job_id}/status",
+        "description": "Check processing status",
+        "response": {
+          "status": 200,
+          "body": {"job_id": "string", "status": "string", "progress": "integer", "result_url": "string"}
+        }
+      }
+    ],
+    "authentication": "API key in X-API-Key header",
+    "rate_limit": "100 uploads per hour"
+  },
+  {
+    "id": "api-003",
+    "service": "Search API",
+    "version": "3.0.0",
+    "base_url": "https://api.example.com/v3/search",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/search",
+        "description": "Full-text search with filters",
+        "body": {
+          "query": {"type": "string", "required": true},
+          "filters": {"type": "object", "required": false},
+          "page": {"type": "integer", "required": false, "default": 1},
+          "size": {"type": "integer", "required": false, "default": 10}
+        },
+        "response": {
+          "status": 200,
+          "body": {"hits": "array", "total": "integer", "took_ms": "integer", "facets": "object"}
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/search/suggest",
+        "description": "Get search suggestions",
+        "body": {
+          "prefix": {"type": "string", "required": true, "min_length": 2}
+        },
+        "response": {
+          "status": 200,
+          "body": {"suggestions": "array"}
+        }
+      }
+    ],
+    "authentication": "Bearer token",
+    "rate_limit": "500 searches per minute"
+  },
+  {
+    "id": "api-004",
+    "service": "Analytics API",
+    "version": "2.0.0",
+    "base_url": "https://api.example.com/v2/analytics",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/events",
+        "description": "Track custom events",
+        "body": {
+          "event_name": {"type": "string", "required": true},
+          "properties": {"type": "object", "required": false},
+          "timestamp": {"type": "datetime", "required": false},
+          "user_id": {"type": "string", "required": false}
+        },
+        "response": {
+          "status": 204
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/reports/{report_id}",
+        "description": "Get pre-computed report",
+        "parameters": [
+          {"name": "start_date", "type": "date", "required": true},
+          {"name": "end_date", "type": "date", "required": true},
+          {"name": "granularity", "type": "string", "required": false, "enum": ["hour", "day", "week", "month"]}
+        ],
+        "response": {
+          "status": 200,
+          "body": {"data": "array", "metadata": "object"}
+        }
+      }
+    ],
+    "authentication": "API key",
+    "rate_limit": "10000 events per minute, 100 reports per hour"
+  },
+  {
+    "id": "api-005",
+    "service": "Notification API",
+    "version": "1.2.0",
+    "base_url": "https://api.example.com/v1/notifications",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/send",
+        "description": "Send notification to users",
+        "body": {
+          "recipients": {"type": "array", "required": true},
+          "channel": {"type": "string", "required": true, "enum": ["email", "push", "sms"]},
+          "template_id": {"type": "string", "required": true},
+          "data": {"type": "object", "required": false}
+        },
+        "response": {
+          "status": 202,
+          "body": {"notification_id": "string", "queued": "integer", "failed": "integer"}
+        }
+      }
+    ],
+    "authentication": "Bearer token",
+    "rate_limit": "1000 notifications per minute"
+  },
+  {
+    "id": "api-006",
+    "service": "File Storage API",
+    "version": "2.3.0",
+    "base_url": "https://api.example.com/v2/storage",
+    "endpoints": [
+      {
+        "method": "PUT",
+        "path": "/files/{path}",
+        "description": "Upload or update a file",
+        "headers": {
+          "Content-Type": "required",
+          "Content-Length": "required",
+          "X-Checksum-SHA256": "optional"
+        },
+        "response": {
+          "status": 200,
+          "body": {"path": "string", "size": "integer", "checksum": "string", "url": "string"}
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/files/{path}",
+        "description": "Download a file",
+        "parameters": [
+          {"name": "signed", "type": "boolean", "required": false, "default": false},
+          {"name": "expires", "type": "integer", "required": false, "description": "URL expiry in seconds"}
+        ],
+        "response": {
+          "status": 200,
+          "body": "file content or signed URL"
+        }
+      }
+    ],
+    "authentication": "Bearer token or pre-signed URL",
+    "rate_limit": "Unlimited downloads, 500 uploads per hour"
+  },
+  {
+    "id": "api-007",
+    "service": "Webhook Management API",
+    "version": "1.0.0",
+    "base_url": "https://api.example.com/v1/webhooks",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/webhooks",
+        "description": "Register a webhook endpoint",
+        "body": {
+          "url": {"type": "string", "required": true, "format": "url"},
+          "events": {"type": "array", "required": true},
+          "secret": {"type": "string", "required": false}
+        },
+        "response": {
+          "status": 201,
+          "body": {"id": "string", "url": "string", "events": "array", "created_at": "datetime"}
+        }
+      },
+      {
+        "method": "DELETE",
+        "path": "/webhooks/{id}",
+        "description": "Remove a webhook",
+        "response": {
+          "status": 204
+        }
+      }
+    ],
+    "authentication": "Bearer token",
+    "rate_limit": "100 webhook registrations per day"
+  },
+  {
+    "id": "api-008",
+    "service": "Machine Learning Inference API",
+    "version": "1.1.0",
+    "base_url": "https://api.example.com/v1/ml",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/predict",
+        "description": "Run model inference",
+        "body": {
+          "model_id": {"type": "string", "required": true},
+          "inputs": {"type": "array", "required": true},
+          "parameters": {"type": "object", "required": false}
+        },
+        "response": {
+          "status": 200,
+          "body": {"predictions": "array", "model_version": "string", "latency_ms": "integer"}
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/batch",
+        "description": "Submit batch inference job",
+        "body": {
+          "model_id": {"type": "string", "required": true},
+          "input_uri": {"type": "string", "required": true},
+          "output_uri": {"type": "string", "required": true}
+        },
+        "response": {
+          "status": 202,
+          "body": {"job_id": "string", "status": "string"}
+        }
+      }
+    ],
+    "authentication": "Bearer token",
+    "rate_limit": "100 predictions per second, 10 batch jobs per hour"
+  }
+]

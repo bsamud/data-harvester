@@ -1,0 +1,127 @@
+[
+  {
+    "id": "guide-001",
+    "title": "Getting Started with Data Harvester",
+    "version": "2.0",
+    "sections": [
+      {
+        "heading": "Introduction",
+        "content": "Data Harvester is a modular ETL framework for collecting, transforming, and loading data from various sources. This guide walks you through installation, configuration, and your first data pipeline."
+      },
+      {
+        "heading": "Installation",
+        "content": "Install using pip: pip install data-harvester. Requires Python 3.11 or higher. For development, clone the repository and install with pip install -e .[dev]"
+      },
+      {
+        "heading": "Quick Start",
+        "content": "1. Copy .env.example to .env and configure credentials. 2. Run python harvest_main.py --config appconfig.ini to verify installation. 3. Create your first pipeline using the plugin system."
+      },
+      {
+        "heading": "Configuration",
+        "content": "Configuration is managed through appconfig.ini for application settings and plugin_config.yaml for plugin-specific options. Environment variables in .env handle secrets."
+      }
+    ],
+    "last_updated": "2025-08-01",
+    "author": "Documentation Team"
+  },
+  {
+    "id": "guide-002",
+    "title": "Building Custom Plugins",
+    "version": "1.5",
+    "sections": [
+      {
+        "heading": "Plugin Architecture",
+        "content": "Plugins extend Data Harvester's functionality by implementing the Plugin base class. Each plugin has initialize() and process() methods called during pipeline execution."
+      },
+      {
+        "heading": "Creating a Plugin",
+        "content": "1. Create a directory under plugins/examples/. 2. Add a plugin.yaml with name, version, and configuration. 3. Create __init__.py importing your plugin class. 4. Extend Plugin and implement required methods."
+      },
+      {
+        "heading": "Plugin Configuration",
+        "content": "Define plugin settings in plugin.yaml. Access configuration in your plugin via self.config. Register plugins in config/plugin_config.yaml under enabled list."
+      },
+      {
+        "heading": "Best Practices",
+        "content": "Use structured logging for debugging. Handle errors gracefully with try/except. Implement idempotent processing where possible. Write tests for your plugin logic."
+      }
+    ],
+    "last_updated": "2025-07-15",
+    "author": "Platform Team"
+  },
+  {
+    "id": "guide-003",
+    "title": "Web Scraping with Ingest Module",
+    "version": "2.0",
+    "sections": [
+      {
+        "heading": "Overview",
+        "content": "The ingest module uses Scrapy for web scraping. Configure spiders in ingest/webscraper/spiders/, define items in items.py, and process data through pipelines."
+      },
+      {
+        "heading": "Creating a Spider",
+        "content": "Extend scrapy.Spider, define start_urls, and implement parse() method. Use ItemLoader for structured extraction. Handle pagination with response.follow()."
+      },
+      {
+        "heading": "Running Spiders",
+        "content": "Run spiders via scrapy crawl spider_name from the webscraper directory. Configure output format with -o output.json. Use settings.py for project-wide configuration."
+      },
+      {
+        "heading": "Rate Limiting and Ethics",
+        "content": "Respect robots.txt, implement delays between requests, and identify your scraper with a proper user agent. Check website terms of service before scraping."
+      }
+    ],
+    "last_updated": "2025-07-20",
+    "author": "Data Engineering Team"
+  },
+  {
+    "id": "guide-004",
+    "title": "Text Processing and NLP",
+    "version": "1.3",
+    "sections": [
+      {
+        "heading": "Text Cleaning",
+        "content": "Use the scrub module for text normalization. Functions include remove_html_tags(), normalize_whitespace(), and normalize_text() for full cleaning."
+      },
+      {
+        "heading": "Entity Extraction",
+        "content": "The extract module uses spaCy for Named Entity Recognition. Initialize EntityExtractor, call extract_entities() for single texts or process_batch() for multiple documents."
+      },
+      {
+        "heading": "Document Classification",
+        "content": "Train classifiers with the classify module. Provide labeled training data, call train() method, then predict() on new documents. Models use TF-IDF and Naive Bayes by default."
+      },
+      {
+        "heading": "Performance Tips",
+        "content": "Use batch processing for multiple documents. Enable multiprocessing with n_process parameter. Cache spaCy models between calls for better throughput."
+      }
+    ],
+    "last_updated": "2025-06-30",
+    "author": "ML Team"
+  },
+  {
+    "id": "guide-005",
+    "title": "Deploying to Production",
+    "version": "1.0",
+    "sections": [
+      {
+        "heading": "Environment Setup",
+        "content": "Use virtual environments for isolation. Pin dependencies in requirements.txt. Configure logging for production with appropriate log levels and rotation."
+      },
+      {
+        "heading": "Cloud Storage",
+        "content": "Configure AWS S3 for cloud storage. Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in .env. Use S3Manager for uploads, downloads, and listing objects."
+      },
+      {
+        "heading": "Monitoring",
+        "content": "Enable structured logging for easy parsing. Monitor job completion rates, processing times, and error counts. Set up alerts for failed pipelines."
+      },
+      {
+        "heading": "Scaling",
+        "content": "Use ParallelProcessor for CPU-bound tasks. Configure worker count based on available cores. For large workloads, consider distributed processing with job queues."
+      }
+    ],
+    "last_updated": "2025-06-15",
+    "author": "DevOps Team"
+  }
+]

@@ -27,13 +27,13 @@ graph TB
     end
 
     subgraph "Ingestion Layer"
-        CRAWLER[Crawler Module<br/>Scrapy-based]
+        INGEST[Ingest Module<br/>Scrapy-based]
         PDF_EXT[PDF Extractor<br/>PyPDF2]
         XML_CONV[XML Converter<br/>xmltodict]
     end
 
     subgraph "Processing Layer"
-        CLEAN[Cleaner<br/>Text Normalization]
+        SCRUB[Scrub<br/>Text Normalization]
         EXTRACT[Entity Extractor<br/>spaCy NLP]
         ENRICH[Enrichment Pipeline<br/>Chain of Enrichers]
         CLASS[Document Classifier<br/>scikit-learn]
@@ -52,16 +52,16 @@ graph TB
         PARALLEL[Parallel Processor<br/>Multiprocessing]
     end
 
-    WEB --> CRAWLER
+    WEB --> INGEST
     PDF --> PDF_EXT
     XML --> XML_CONV
-    API --> CRAWLER
+    API --> INGEST
 
-    CRAWLER --> CLEAN
-    PDF_EXT --> CLEAN
-    XML_CONV --> CLEAN
+    INGEST --> SCRUB
+    PDF_EXT --> SCRUB
+    XML_CONV --> SCRUB
 
-    CLEAN --> EXTRACT
+    SCRUB --> EXTRACT
     EXTRACT --> ENRICH
     ENRICH --> CLASS
 
@@ -69,11 +69,11 @@ graph TB
     CLASS --> S3
     S3 --> CACHE
 
-    CONFIG -.-> CRAWLER
+    CONFIG -.-> INGEST
     CONFIG -.-> CLASS
-    LOG -.-> CRAWLER
+    LOG -.-> INGEST
     LOG -.-> CLASS
-    DELTA -.-> CRAWLER
+    DELTA -.-> INGEST
     PARALLEL -.-> EXTRACT
 ```
 
@@ -145,18 +145,18 @@ Detailed view of how modules interact with each other:
 
 ```mermaid
 graph LR
-    subgraph crawler["Crawler Module"]
+    subgraph ingest["Ingest Module"]
         SPIDER[Spider]
         PIPELINE[Pipeline]
         ITEMS[Items]
     end
 
-    subgraph extractor["Extractor Module"]
+    subgraph extract["Extract Module"]
         ENT_EXT[EntityExtractor]
         PDF_EXT[PDFExtractor]
     end
 
-    subgraph classifier["Classifier Module"]
+    subgraph classify["Classifier Module"]
         DOC_CLASS[DocumentClassifier]
         TRAIN_PIPE[TrainingPipeline]
     end
@@ -168,11 +168,11 @@ graph LR
         DELTA[DeltaDetector]
     end
 
-    subgraph enrichers["Enrichers Module"]
+    subgraph enrich["Enrich Module"]
         ENRICH_PIPE[EnrichmentPipeline]
     end
 
-    subgraph data_loader["Data Loader"]
+    subgraph aggregate["Aggregate Module"]
         AGGREGATOR[DataAggregator]
     end
 
@@ -216,7 +216,7 @@ graph TB
     end
 
     subgraph "Example Plugins"
-        DRUG[Drug Discovery Plugin]
+        EXAMPLE[Example Plugin]
         CUSTOM[Custom Plugin...]
     end
 
@@ -230,13 +230,13 @@ graph TB
     APP_CFG --> LOADER
     LOADER --> REGISTRY
 
-    BASE --> DRUG
+    BASE --> EXAMPLE
     BASE --> CUSTOM
 
-    REGISTRY --> DRUG
+    REGISTRY --> EXAMPLE
     REGISTRY --> CUSTOM
 
-    DRUG --> INIT
+    EXAMPLE --> INIT
     INIT --> PROCESS
     PROCESS --> OUTPUT
 ```
@@ -358,7 +358,7 @@ graph TB
     end
 
     subgraph "Consumers"
-        CRAWLER[Crawler]
+        INGEST[Ingest]
         S3[S3Manager]
         CLASSIFIER[Classifier]
         PLUGINS[Plugins]
@@ -371,7 +371,7 @@ graph TB
     ENV_CFG --> APP_CFG
     YAML_CFG --> APP_CFG
 
-    APP_CFG --> CRAWLER
+    APP_CFG --> INGEST
     APP_CFG --> S3
     APP_CFG --> CLASSIFIER
     APP_CFG --> PLUGINS
@@ -447,7 +447,7 @@ FUNCTION harvest_data(config_path, process_id):
     plugins = load_plugins(config)
 
     # Initialize components
-    crawler = initialize_crawler(config)
+    ingest = initialize_ingest(config)
     extractor = EntityExtractor()
     classifier = DocumentClassifier()
 
@@ -458,12 +458,12 @@ FUNCTION harvest_data(config_path, process_id):
     # Main processing loop
     FOR source IN config.sources:
         # Crawl/fetch data
-        raw_data = crawler.crawl(source)
+        raw_data = ingest.crawl(source)
 
         # Check for changes
         IF delta_detector.has_changed(raw_data):
             # Clean text
-            cleaned = cleaner.normalize_text(raw_data)
+            cleaned = scrub.normalize_text(raw_data)
 
             # Extract entities
             entities = extractor.extract_entities(cleaned)

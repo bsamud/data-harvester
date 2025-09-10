@@ -18,3 +18,8 @@ jsonlines==4.0.0
 lxml==5.1.0
 
 PyPDF2==3.0.1
+
+# Development & Testing
+pytest>=7.4.0
+pytest-benchmark==4.0.0
+memory-profiler==0.61.0

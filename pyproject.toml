@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "data-harvester"
+version = "2.0.0"
+description = "A modular, open-source data harvesting and ETL framework"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Bharat Samudrala"}
+]
+keywords = [
+    "etl", "data-harvesting", "web-scraping", "nlp",
+    "machine-learning", "data-pipeline", "scrapy"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "scrapy>=2.11.0",
+    "python-dotenv>=1.0.0",
+    "boto3>=1.34.0",
+    "pandas>=2.1.4",
+    "pyyaml>=6.0.1",
+    "jsonschema>=4.20.0",
+    "requests>=2.31.0",
+    "scikit-learn>=1.3.2",
+    "spacy>=3.7.2",
+    "python-dateutil>=2.8.2",
+    "xmltodict>=0.13.0",
+    "jsonlines>=4.0.0",
+    "lxml>=5.1.0",
+    "PyPDF2>=3.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-benchmark>=4.0.0",
+    "memory-profiler>=0.61.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/bharatsamudrala/data-harvester"
+Documentation = "https://github.com/bharatsamudrala/data-harvester#readme"
+Repository = "https://github.com/bharatsamudrala/data-harvester.git"
+Issues = "https://github.com/bharatsamudrala/data-harvester/issues"
+
+[project.scripts]
+data-harvester = "harvest_main:main"
+
+[tool.setuptools.packages.find]
+include = [
+    "ingest*",
+    "extract*",
+    "classify*",
+    "scrub*",
+    "enrich*",
+    "convert*",
+    "aggregate*",
+    "common*",
+    "core*",
+    "plugins*",
+    "config*",
+]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.ini", "*.json"]

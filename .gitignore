@@ -40,3 +40,7 @@ rename_*.sh
 # OS
 .DS_Store
 Thumbs.db
+
+# Benchmark results (keep .gitkeep)
+benchmarks/results/*.json
+!benchmarks/results/.gitkeep

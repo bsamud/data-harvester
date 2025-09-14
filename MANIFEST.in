@@ -1,0 +1,16 @@
+include LICENSE
+include README.md
+include CHANGELOG.md
+include VERSION
+include appconfig.ini
+include requirements.txt
+recursive-include config *.yaml *.ini
+recursive-include seed_data *.json *.md
+recursive-include docs *.md
+graft tests
+graft benchmarks
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *.so
+global-exclude .git*
+global-exclude .DS_Store

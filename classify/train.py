@@ -2,7 +2,7 @@
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import classification_report, confusion_matrix
 from common.logger import log
-from classifier.classify import DocumentClassifier
+from classify.classify import DocumentClassifier
 
 class TrainingPipeline:
     """Pipeline for training and evaluating classifiers"""

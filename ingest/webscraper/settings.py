@@ -2,8 +2,8 @@
 
 BOT_NAME = 'data-harvester'
 
-SPIDER_MODULES = ['crawler.webscraper.spiders']
-NEWSPIDER_MODULE = 'crawler.webscraper.spiders'
+SPIDER_MODULES = ['ingest.webscraper.spiders']
+NEWSPIDER_MODULE = 'ingest.webscraper.spiders'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -19,7 +19,7 @@ COOKIES_ENABLED = False
 
 # Configure item pipelines
 ITEM_PIPELINES = {
-    'crawler.webscraper.pipelines.DataHarvesterPipeline': 300,
+    'ingest.webscraper.pipelines.DataHarvesterPipeline': 300,
 }
 
 # Enable HTTP caching

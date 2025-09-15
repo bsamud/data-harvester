@@ -31,6 +31,9 @@ generate_*.py
 rename_*.sh
 *.bak
 
+# Claude Code
+.claude/
+
 # IDE
 .idea/
 .vscode/
